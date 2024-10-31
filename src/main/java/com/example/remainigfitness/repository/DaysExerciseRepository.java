@@ -16,5 +16,8 @@ public interface DaysExerciseRepository extends JpaRepository<DaysExercise, Long
     // Custom query method to find all days exercises by userId
     List<DaysExercise> findByUserId(Long userId);
 //    @Query("SELECT de.exerciseName FROM DayExercise de WHERE de.day = :day AND de.userId = :userId")
-    List<String> findExerciseNamesByDay(@Param("day") String day, @Param("userId") Long userId);
+@Query("SELECT de.exerciseName FROM DaysExercise d " +
+        "JOIN d.exercises de " +
+        "WHERE d.userId = :userId AND de.day = :day")
+List<String> findExerciseNamesByDay(@Param("day") String day, @Param("userId") Long userId);
 }
