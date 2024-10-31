@@ -42,4 +42,9 @@ public class DaysExerciseController {
         DaysExercise updatedExercise = daysExerciseService.updateDaysExercise(id, daysExercise);
         return updatedExercise != null ? ResponseEntity.ok(updatedExercise) : ResponseEntity.notFound().build();
     }
+    @GetMapping("/day/{day}/{userId}")
+    public ResponseEntity<List<String>> getExercisesByDay(@PathVariable String day, @PathVariable Long userId) {
+        List<String> exercises = daysExerciseService.getExerciseNamesByDay(day, userId);
+        return ResponseEntity.ok(exercises);
+    }
 }

@@ -38,5 +38,9 @@ public class DaysExerciseService {
         }
         return null; // or throw an exception if preferred
     }
+
+    public List<String> getExerciseNamesByDay(String day, Long userId) {
+        return daysExerciseRepository.findExerciseNamesByDay(day, userId);
+    }
 }
 
